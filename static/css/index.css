@@ -1,0 +1,183 @@
+:root {
+    --scrollY: 0;
+    --screenX: 0;
+    --screenY: 0;
+}
+
+* {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+@media (min-width: 891px) {
+    #central-birthday *, #hlopushka {
+        zoom: 1.05;
+    }
+}
+body {
+    margin: 0;
+    background: black;
+    scrollbar-gutter: stable both-edges;
+    overflow: hidden;
+}
+
+#central-birthday {
+    margin-top: 42vh;
+    width: 100vw;
+    text-align: center;
+    color: white;
+    opacity: 0.05;
+    transition: opacity 1.5s cubic-bezier(0, 0, 1, 0.36);
+}
+
+#central-birthday.hidden {
+    opacity: 0;
+    transition: opacity 0s;
+}
+
+.effects {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.effects>* {
+    position: absolute;
+}
+
+.confeta {
+    --background-color-hsl: hsl(0, 0%, 100%);
+    /* Значение сверху и на что не влияет, это просто чтобы IDEшечка не ругалась, т.к. эта переменная через js задаётся */
+    position: absolute;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: scale 0.1s ease-in-out, background-color 0.1s ease-in-out;
+    background-color: hsla(var(--background-color-hsl), 0.25);
+}
+
+.confeta:hover {
+    scale: 1.1;
+    background-color: hsla(var(--background-color-hsl), 0.3);
+}
+
+.confeta>img {
+    width: 64%;
+    margin-top: 18%;
+    margin-left: 18%;
+}
+
+.confeta>div {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 3px;
+    margin-left: 1px;
+}
+
+.confeta.tapped {
+    transition: scale 0.3s cubic-bezier(0.38, -0.99, 0.67, 0.64), opacity 0.1s ease-in-out;
+    pointer-events: none;
+    scale: 0;
+}
+
+.confeta.press {
+    position: absolute;
+    top: 50vh!important;
+    left: 50vw!important;
+    scale: 10;
+}
+
+#hlopushka {
+    bottom: 50px;
+    left: calc(44vw - 4em);
+    transform: translate(15px, -15px);
+    width: 8em;
+    opacity: 0.1;
+    transition: opacity 0.5s ease-in;
+    animation: hlopushka-shake-started 8s infinite;
+}
+
+#hlopushka.started {
+    animation: hlopushka-shake-started 0.15s infinite;
+    transition: translate 0.8s cubic-bezier(0.29, 0.34, 0.41, 0.98), opacity 0.1s ease, animation 0.8s ease-in;
+    translate: max(-1vw, -10px) 25px;
+    opacity: 0.8;
+}
+
+#central-birthday.started {
+    transition: opacity 0.2s ease;
+    opacity: 1;
+}
+
+#hlopushka.boomed {
+    transition: transform 0.1s cubic-bezier(0.22, 0.09, 0, 1), opacity 0.7s cubic-bezier(1, 0, 1, 1);
+    transform: translate(min(5vw, 30px), -20px);
+    opacity: 0;
+}
+
+#down-button {
+    z-index: 10;
+    background-color: #81818166;
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
+    width: 2.2em;
+    border-radius: 100%;
+    padding: 0.8em;
+    cursor: pointer;
+    scale: 1;
+    transition: scale 0.5s cubic-bezier(0.05,0, 0.34, 1.94);
+}
+
+#down-button img {
+    rotate: 90deg;
+}
+
+#down-button:hover {
+    background-color: rgba(110, 110, 110, 0.4);
+    scale: 1.05;
+    transition: scale 0.1s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+#down-button.hidden {
+    transition: scale 0.5s cubic-bezier(0.05,-0.02, 0.34, 1);
+    pointer-events: none;
+    cursor: unset;
+    scale: 0;
+}
+
+#down-button.slow-animation {
+    transition: opacity 1s ease-out;
+}
+
+#movable-box {
+    position: absolute;
+    transition: top 1s cubic-bezier(0, 0, 0.11, 1.00);
+    top: 0;
+}
+
+#movable-box.move-out {
+    top: -100vh;
+    transition: top 1s ease-in;
+}
+
+#movable-box.go-down {
+    top: 200vh;
+    transition: top 0s;
+}
+
+@keyframes hlopushka-shake-started {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(3px, 3px) rotate(2deg); }
+  50% { transform: translate(0, 0) rotate(0deg); }
+  75% { transform: translate(-3px, 3px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
