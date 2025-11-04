@@ -164,7 +164,7 @@ async function effectNew(x, y, effectElem) {
     confetiContainer.appendChild(effectElem);
 
     const direction = Math.random() < 0.5 ? -1 : 1;
-    const xSpeedCoef = (Math.random() * (window.innerWidth - 50) * 0.75 + (window.innerWidth - 50) * 0.1) / 2 / (1 - 1 / 1.09) * direction;
+    const xSpeedCoef = (Math.random() * (window.innerWidth - 50) * 0.65 + (window.innerWidth - 50) * 0.1) / 2 / (1 - 1 / 1.09) * direction;
     const ySpeedCoef = (Math.random() * y * 0.83 + y * 0.1) / (1 - 1 / 1.09);
 
     let time = 0;
