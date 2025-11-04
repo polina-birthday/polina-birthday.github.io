@@ -2,9 +2,11 @@
     --scrollY: 0;
     --screenX: 0;
     --screenY: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-* {
+img {
     user-drag: none;
     -webkit-user-drag: none;
     user-select: none;
@@ -18,6 +20,13 @@
         zoom: 1.05;
     }
 }
+
+@media (min-height: 1000px) {
+    body {
+        zoom: 1.5;
+    }
+}
+
 body {
     margin: 0;
     background: black;

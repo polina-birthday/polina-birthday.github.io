@@ -123,6 +123,9 @@ function init() {
     centralBirthday = document.getElementById('central-birthday');
     downButton = document.getElementById('down-button');
     movableBox = document.getElementById('movable-box');
+    window.addEventListener("click", e => {
+
+    })
     downButton.addEventListener('click', (e) => {
         if (!downButton.classList.contains('hidden')) {
             downButton.classList.add('hidden');
