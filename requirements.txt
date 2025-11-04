@@ -1,2 +1,2 @@
-fastapi==0.120.0
+flask
 gunicorn

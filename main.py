@@ -1,12 +1,13 @@
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from flask import Flask, render_template
+import os
 
-app = FastAPI()
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app = Flask(__name__)
 
 
-@app.get("/")
+@app.route('/')
 def index():
-    return FileResponse(path="templates/index.html", media_type="text/html")
+    return render_template("index.html")
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=os.getenv("PORT", default=8080))
