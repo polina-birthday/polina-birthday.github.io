@@ -28,9 +28,12 @@ img {
 }
 
 body {
-    margin: 0;
+    font-family: Arial, sans-serif;
+    margin-left: 0;
+    margin-right: 0;
     background: black;
     scrollbar-gutter: stable both-edges;
+    width: 100vw;
     overflow: hidden;
 }
 
@@ -135,6 +138,7 @@ body {
 #down-button {
     z-index: 10;
     background-color: #81818166;
+    aspect-ratio: 1;
     position: absolute;
     right: 2em;
     bottom: 2em;

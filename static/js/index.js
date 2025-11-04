@@ -164,7 +164,7 @@ async function effectNew(x, y, effectElem) {
     confetiContainer.appendChild(effectElem);
 
     const direction = Math.random() < 0.5 ? -1 : 1;
-    const xSpeedCoef = (Math.random() * window.innerWidth * 0.82 + window.innerWidth * 0.1) / 2 / (1 - 1 / 1.09) * direction;
+    const xSpeedCoef = (Math.random() * window.innerWidth * 0.7 + window.innerWidth * 0.1) / 2 / (1 - 1 / 1.09) * direction;
     const ySpeedCoef = (Math.random() * y * 0.83 + y * 0.1) / (1 - 1 / 1.09);
 
     let time = 0;
@@ -218,25 +218,29 @@ function confetiAnimationNew() {
         effectElem.classList.add("confeta");
         effectElem.style.setProperty("--background-color-hsl", randomColorHSL())
         effectElem.innerHTML = i;
-        let pressTimer;
-        let pressFlag = false;
-        effectElem.onpointerdown = function (e) {
-            pressTimer = setTimeout(function() {
-                effectElem.classList.add("press");
-                pressFlag = true;
-                effectElem.setPointerCapture(e.pointerId);
-            },750);
+        effectElem.onclick = (e) => {
+            effectElemTapped(effectElem)
         }
-        effectElem.onpointerup = function (e) {
-            clearTimeout(pressTimer);
-            if (pressFlag) {
-                pressFlag = false;
-                effectElem.classList.remove("press");
-                effectElem.releasePointerCapture(e.pointerId)
-            } else {
-                effectElemTapped(effectElem)
-            }
-        }
+        // let pressTimer;
+        // let pressFlag = false;
+        // effectElem.onpointerdown = function (e) {
+        //     pressTimer = setTimeout(function() {
+        //         effectElem.classList.add("press");
+        //         pressFlag = true;
+        //         effectElem.setPointerCapture(e.pointerId);
+        //     },750);
+        // }
+        // effectElem.onpointerup = function (e) {
+        //     clearTimeout(pressTimer);
+        //     if (pressFlag) {
+        //         pressFlag = false;
+        //         effectElem.classList.remove("press");
+        //         effectElem.releasePointerCapture(e.pointerId)
+        //     } else {
+        //         effectElemTapped(effectElem)
+        //     }
+        // }
+        // Зум сделать не успел
         effectNew(...coords, effectElem);
     }
 }
